@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/output.css" />
+    <title>Quiz Project</title>
+  </head>
+  <body class="bg-teal">
+    <div
+      class="center_div  hover:scale-110 transition ease-in-out delay-150 group hover:border-solid hover:border-2 hover:border-ligthGrey hover:rounded-md"
+    >
+      <button
+        class="border-2 border-teal bg-ligthGrey p-4 rounded-md font-semibold text-teal group-hover:text-white group-hover:bg-transparent"
+      >
+        Start Quiz
+      </button>
+    </div>
+
+    <div
+      class="center_div instructions rounded-md shadow-lg bg-ligthGrey flex-col gap-6"
+    >
+      <h2
+        class="font-semibold text-2xl border-solid border-b-2 p-6 border-ligthGrey shadow-md"
+      >
+        Some quiz rules:
+      </h2>
+      <ul
+        class="py-4 px-6 border-solid border-b-2  border-ligthGrey shadow-md"
+      >
+        <li class="font-normal text-lg mb-4 mt-0 leading-tight">
+          1 .You will have only 15 seconds per each question
+        </li>
+        <li class="font-normal text-lg mb-4 leading-tight">
+          2. Once you select answer, you can't reselect
+        </li>
+        <li class="font-normal text-lg mb-4 leading-tight">
+          3. You can't select any option once the time goes off
+        </li>
+        <li class="font-normal text-lg mb-4 leading-tight">
+          4. You can't exit from the quiz while you are playing
+        </li>
+        <li class="font-normal text-lg mb-4 leading-tight">
+          5. You will get point on basis of correct answer
+        </li>
+      </ul>
+      <div class="flex justify-end px-6 py-4">
+        <button
+          class="border-solid border-2 border-teal bg-transparent p-1 rounded-md mx-4 font-semibold text-teal"
+        >
+          Exit Quiz
+        </button>
+        <button
+          class="border-solid border-2 border-teal bg-teal p-1 rounded-md font-semibold text-ligthGrey"
+        >
+          Continue
+        </button>
+      </div>
+    </div>
+
+    <article class="center_div bg-ligthGrey w-3/4 md:w-3/5 lg:w-1/2 hidden">
+      <header
+        class="py-4 px-8 flex justify-between items-center shadow-md border-b border-gray-400 border-opacity-50"
+      >
+        <h3 class="font-bold text-xl">Awesome Quiz Application</h3>
+        <div
+          class="flex bg-lightTeal p-2 justify-between items-center rounded-md"
+        >
+          <p class="mr-4 font-semibold">Time left</p>
+          <span
+            class="font-bold text-ligthGrey bg-black p-1 rounded-sm select-none"
+            >04</span
+          >
+        </div>
+      </header>
+      <article class="py-4 px-8">
+        <h2 class="font-bold text-2xl text-center mb-4">
+          1. What does HTML stands for?
+        </h2>
+        <div class="flex flex-col gap-4">
+          <div class="w-full bg-midGrey p-2 border-2 border-teal rounded-md">
+            <span class="text-xl font-semibold text-darkGrey"
+              >Hyper Text Preprocessor</span
+            >
+          </div>
+          <div class="w-full bg-midGrey p-2 border-2 border-teal rounded-md">
+            <span class="text-xl font-semibold text-darkGrey"
+              >Hyper Text MarkUp Language</span
+            >
+          </div>
+          <div class="w-full bg-midGrey p-2 border-2 border-teal rounded-md">
+            <span class="text-xl font-semibold text-darkGrey"
+              >Hyper Text Multiple Language</span
+            >
+          </div>
+          <div class="w-full bg-midGrey p-2 border-2 border-teal rounded-md">
+            <span class="text-xl font-semibold text-darkGrey"
+              >Hyper Tool Multi Language</span
+            >
+          </div>
+        </div>
+      </article>
+      <footer class="flex justify-between items-center px-8 py-4">
+        <div class="font-semibold text-lg">
+          <p>
+            <span class="font-bold text-xl">2</span> of
+            <span class="font-bold text-xl">5</span> Questions
+          </p>
+        </div>
+        <button
+          class="font-semibold text-lg text-ligthGrey bg-teal p-2 rounded-md"
+        >
+          Next Quiz
+        </button>
+      </footer>
+    </article>
+  </body>
+</html>
