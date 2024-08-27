@@ -5,3 +5,16 @@
 .center_div {
     @apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
 }
+
+.option_list span{
+    @apply text-xl font-semibold text-darkGrey  w-full bg-midGrey p-2 border-2 border-teal rounded-md
+
+}
+
+.option_list span.correct {
+    @apply  text-xl font-semibold text-darkGrey  w-full bg-lightGreen p-2 border-2 border-deepGreen rounded-md
+}
+
+.option_list span.wrong {
+    @apply  text-xl font-semibold text-darkGrey  w-full bg-lightRed p-2 border-2 border-deepRed rounded-md
+}
