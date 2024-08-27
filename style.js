@@ -17,7 +17,7 @@ const quitBtn = document.getElementById("quit_btn");
 let quizIndex;
 let counter;
 let userScore = 0;
-let timeCount = 100;
+let timeCount = 60;
 
 function timeFunc() {
   counter = setInterval(() => {
@@ -74,9 +74,8 @@ function chooseOption(selectedOption, options) {
   let userAnswer = selectedOption.textContent;
   let correctAnswer = questions[quizIndex].answer;
 
-  // Disable all options after one is clicked
   options.forEach((opt) => {
-    opt.style.pointerEvents = "none"; // Disable click
+    opt.style.pointerEvents = "none"; 
   });
 
   if (userAnswer === correctAnswer) {
@@ -84,7 +83,6 @@ function chooseOption(selectedOption, options) {
     userScore++;
   } else {
     selectedOption.classList.add("wrong");
-    // Optionally, highlight the correct answer
     options.forEach((opt) => {
       if (opt.textContent === correctAnswer) {
         opt.classList.add("correct");
