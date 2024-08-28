@@ -599,6 +599,10 @@ video {
   width: 100%;
 }
 
+.w-10 {
+  width: 2.5rem;
+}
+
 .select-none {
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -776,11 +780,6 @@ video {
   line-height: 1.25;
 }
 
-.text-darkGrey {
-  --tw-text-opacity: 1;
-  color: rgb(73 80 87 / var(--tw-text-opacity));
-}
-
 .text-ligthGrey {
   --tw-text-opacity: 1;
   color: rgb(241 243 245 / var(--tw-text-opacity));
@@ -913,8 +912,16 @@ video {
 }
 
 @media (min-width: 768px) {
+  .md\:h-3\/5 {
+    height: 60%;
+  }
+
   .md\:w-3\/5 {
     width: 60%;
+  }
+
+  .md\:w-3 {
+    width: 0.75rem;
   }
 }
 

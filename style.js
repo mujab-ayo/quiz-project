@@ -16,13 +16,21 @@ const quitBtn = document.getElementById("quit_btn");
 
 let quizIndex;
 let counter;
+let timeFomat;
 let userScore = 0;
-let timeCount = 60;
+let timeCount = 300;
+
 
 function timeFunc() {
   counter = setInterval(() => {
     timeCount--;
-    timer.textContent = timeCount;
+
+    let minutes = Math.floor(timeCount / 60);
+    let seconds = timeCount % 60;
+
+    timeFomat = `${minutes}: ${seconds > 10 ? '' : '0'}${seconds}`;
+    timer.textContent = timeFomat;
+
     if (timeCount <= 0) {
       quizDiv.classList.remove("block");
       quizDiv.classList.add("hidden");
@@ -75,7 +83,7 @@ function chooseOption(selectedOption, options) {
   let correctAnswer = questions[quizIndex].answer;
 
   options.forEach((opt) => {
-    opt.style.pointerEvents = "none"; 
+    opt.style.pointerEvents = "none";
   });
 
   if (userAnswer === correctAnswer) {
