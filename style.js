@@ -21,106 +21,6 @@ let userScore = 0;
 let timeCount = 300;
 
 
-function timeFunc() {
-  counter = setInterval(() => {
-    timeCount--;
-
-    let minutes = Math.floor(timeCount / 60);
-    let seconds = timeCount % 60;
-
-    timeFomat = `${minutes}: ${seconds > 10 ? '' : '0'}${seconds}`;
-    timer.textContent = timeFomat;
-
-    if (timeCount <= 0) {
-      quizDiv.classList.remove("block");
-      quizDiv.classList.add("hidden");
-      showScoreBoard();
-    }
-  }, 1000);
-}
-
-function showQuiz(num) {
-  const quizQuest = questions[num].question;
-  const quizNumb = questions[num].number;
-
-  const element = `
-        <h2 class="font-bold question_info text-2xl text-center mb-4">
-          <span>${quizNumb}.</span> ${quizQuest}
-        </h2>
-        <div class="flex flex-col gap-4 option_list">${showOption(num)}</div>
-        `;
-
-  questionContainer.innerHTML = element;
-  const optionList = document.querySelector(".option_list");
-  const options = optionList.querySelectorAll(".option");
-
-  // Add event listeners to options
-  options.forEach((opt) => {
-    opt.addEventListener("click", function () {
-      chooseOption(this, options);
-    });
-  });
-
-  showQuestionRate(num);
-}
-
-function showOption(num) {
-  const optionContainer = `
-            <span class="option w-full bg-midGrey p-2 border-2 border-teal rounded-md"
-              >${questions[num].options[0]}</span>
-            <span class="option w-full bg-midGrey p-2 border-2 border-teal rounded-md"
-              >${questions[num].options[1]}</span>
-            <span class="option w-full bg-midGrey p-2 border-2 border-teal rounded-md"
-              >${questions[num].options[2]}</span>
-            <span class="option w-full bg-midGrey p-2 border-2 border-teal rounded-md"
-              >${questions[num].options[3]}</span>`;
-
-  return optionContainer;
-}
-
-function chooseOption(selectedOption, options) {
-  let userAnswer = selectedOption.textContent;
-  let correctAnswer = questions[quizIndex].answer;
-
-  options.forEach((opt) => {
-    opt.style.pointerEvents = "none";
-  });
-
-  if (userAnswer === correctAnswer) {
-    selectedOption.classList.add("correct");
-    userScore++;
-  } else {
-    selectedOption.classList.add("wrong");
-    options.forEach((opt) => {
-      if (opt.textContent === correctAnswer) {
-        opt.classList.add("correct");
-      }
-    });
-  }
-}
-
-function showQuestionRate(num) {
-  const questionRate = `
-          <p>
-            <span class="font-bold text-xl">${questions[num].number}</span> of
-            <span class="font-bold text-xl">${questions.length}</span> Questions
-          </p>
-    `;
-  questionRateInfo.innerHTML = questionRate;
-}
-
-function showScoreBoard() {
-  scoreCard.classList.remove("hidden");
-  scoreCard.classList.add("block");
-  const info = `
-  <h4 class="font-bold text-xl text-center">
-          You've completed the Quiz
-   </h4>
-  <p class="font-semibold text-lg text-center">Your got ${userScore} out of ${questions.length}</p>`;
-
-  scoreInfo.innerHTML = info;
-}
-
 startBtn.addEventListener("click", function () {
   this.classList.add("hidden");
   infoDiv.classList.remove("hidden");
@@ -170,3 +70,107 @@ replayBtn.addEventListener("click", function () {
   scoreCard.classList.add("hidden");
   scoreInfo.innerHTML = "";
 });
+
+
+function showQuiz(num) {
+  const quizQuest = questions[num].question;
+  const quizNumb = questions[num].number;
+
+  const element = `
+        <h2 class="font-bold question_info text-2xl text-center mb-4">
+          <span>${quizNumb}.</span> ${quizQuest}
+        </h2>
+        <div class="flex flex-col gap-4 option_list">${showOption(num)}</div>
+        `;
+
+  questionContainer.innerHTML = element;
+  const optionList = document.querySelector(".option_list");
+  const options = optionList.querySelectorAll(".option");
+
+  options.forEach((opt) => {
+    opt.addEventListener("click", function () {
+      chooseOption(this, options);
+    });
+  });
+
+  showQuestionRate(num);
+}
+
+function showOption(num) {
+  const optionContainer = `
+            <span class="option w-full bg-midGrey p-2 border-2 border-teal rounded-md"
+              >${questions[num].options[0]}</span>
+            <span class="option w-full bg-midGrey p-2 border-2 border-teal rounded-md"
+              >${questions[num].options[1]}</span>
+            <span class="option w-full bg-midGrey p-2 border-2 border-teal rounded-md"
+              >${questions[num].options[2]}</span>
+            <span class="option w-full bg-midGrey p-2 border-2 border-teal rounded-md"
+              >${questions[num].options[3]}</span>`;
+
+  return optionContainer;
+}
+
+
+
+function timeFunc() {
+  counter = setInterval(() => {
+    timeCount--;
+
+    let minutes = Math.floor(timeCount / 60);
+    let seconds = timeCount % 60;
+
+    timeFomat = `${minutes}: ${seconds > 10 ? '' : '0'}${seconds}`;
+    timer.textContent = timeFomat;
+
+    if (timeCount <= 0) {
+      quizDiv.classList.remove("block");
+      quizDiv.classList.add("hidden");
+      showScoreBoard();
+    }
+  }, 1000);
+}
+
+
+function chooseOption(selectedOption, options) {
+  let userAnswer = selectedOption.textContent;
+  let correctAnswer = questions[quizIndex].answer;
+
+  options.forEach((opt) => {
+    opt.style.pointerEvents = "none";
+  });
+
+  if (userAnswer === correctAnswer) {
+    selectedOption.classList.add("correct");
+    userScore++;
+  } else {
+    selectedOption.classList.add("wrong");
+    options.forEach((opt) => {
+      if (opt.textContent === correctAnswer) {
+        opt.classList.add("correct");
+      }
+    });
+  }
+}
+
+function showQuestionRate(num) {
+  const questionRate = `
+          <p>
+            <span class="font-bold text-xl">${questions[num].number}</span> of
+            <span class="font-bold text-xl">${questions.length}</span> Questions
+          </p>
+    `;
+  questionRateInfo.innerHTML = questionRate;
+}
+
+function showScoreBoard() {
+  scoreCard.classList.remove("hidden");
+  scoreCard.classList.add("block");
+  const info = `
+  <h4 class="font-bold text-xl text-center">
+          You've completed the Quiz
+   </h4>
+  <p class="font-semibold text-lg text-center">Your got ${userScore} out of ${questions.length}</p>`;
+
+  scoreInfo.innerHTML = info;
+}
+
